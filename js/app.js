@@ -156,6 +156,8 @@ function goToPrevQuestion() {
   if (state.currentQuestionIndex > 0) {
     state.currentQuestionIndex--;
     renderQuestion();
+  } else {
+    showSection('name');
   }
 }
 
@@ -207,7 +209,7 @@ function displayResults() {
     .map(item => `<li>${item}</li>`)
     .join('');
   
-  // Extra Guidance
+  // Extra Guidance Rendering Fix
   const extraContainer = document.getElementById('extra-guidance-container');
   const extraTitle = document.getElementById('extra-guidance-title');
   const extraSteps = document.getElementById('extra-guidance-steps');
@@ -219,7 +221,10 @@ function displayResults() {
       .map(step => `<li>${step}</li>`)
       .join('');
   } else {
+    // Explicitly hide and clear if no guidance exists (e.g. Strong Choice)
     extraContainer.classList.add('hidden');
+    extraTitle.innerText = '';
+    extraSteps.innerHTML = '';
   }
     
   showSection('results');
