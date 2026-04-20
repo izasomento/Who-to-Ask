@@ -68,6 +68,20 @@ function init() {
   
   elements.viewRankingBtn.addEventListener('click', showRanking);
   elements.resetAllBtn.addEventListener('click', resetEverything);
+
+  // Keyboard Support
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      // If we're on the Name screen and it's valid
+      if (!sections.name.classList.contains('hidden') && !elements.confirmNameBtn.disabled) {
+        startEvaluation();
+      } 
+      // If we're on the Questionnaire and an option is selected
+      else if (!sections.questionnaire.classList.contains('hidden') && !elements.nextBtn.disabled) {
+        goToNextQuestion();
+      }
+    }
+  });
 }
 
 // Navigation Functions
