@@ -119,7 +119,16 @@ const resultCategories = {
       "Detailed brag sheet highlighting specific accomplishments in their context",
       "A summary of your goals and what you hope they can highlight",
       "Clear deadline dates"
-    ]
+    ],
+    extraGuidance: {
+      title: "How to strengthen this relationship before asking",
+      steps: [
+        "Schedule a brief 15-minute conversation to discuss your academic interests or professional goals.",
+        "Follow up on a specific piece of feedback they gave you to show you are listening and growing.",
+        "Prepare a 'memory sheet' with 2-3 specific moments where you learned or showed effort in their context.",
+        "Share your 'Why'—explain the deeper motivation behind the path you are pursuing."
+      ]
+    }
   },
   NOT_BEST_FIT: {
     label: "Not the Best Fit",
@@ -134,6 +143,16 @@ const resultCategories = {
       "Comprehensive brag sheet covering your entire relationship",
       "A draft or outline of specific strengths you hope they might cover",
       "Very clear deadlines (the easier you make it, the better)"
-    ]
+    ],
+    extraGuidance: {
+      title: "If you don’t have a strong recommender yet",
+      steps: [
+        "Attend office hours or stay after meetings to ask a thoughtful question about the material or a project.",
+        "Be consistent in your effort and presence; reliability is often as important as performance.",
+        "Briefly share your goals or interests after a session to help them see you as a person, not just a student.",
+        "Follow through on suggestions they make—this shows you value their expertise and are coachable.",
+        "Remember that strong relationships are built over time through small, consistent interactions."
+      ]
+    }
   }
 };

@@ -192,6 +192,21 @@ function displayResults() {
   elements.resultChecklist.innerHTML = result.checklist
     .map(item => `<li>${item}</li>`)
     .join('');
+  
+  // Extra Guidance
+  const extraContainer = document.getElementById('extra-guidance-container');
+  const extraTitle = document.getElementById('extra-guidance-title');
+  const extraSteps = document.getElementById('extra-guidance-steps');
+  
+  if (result.extraGuidance) {
+    extraContainer.classList.remove('hidden');
+    extraTitle.innerText = result.extraGuidance.title;
+    extraSteps.innerHTML = result.extraGuidance.steps
+      .map(step => `<li>${step}</li>`)
+      .join('');
+  } else {
+    extraContainer.classList.add('hidden');
+  }
     
   showSection('results');
 }
