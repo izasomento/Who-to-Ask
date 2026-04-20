@@ -7,9 +7,8 @@
 **Last session**: 2026-04-20
 
 **Next actions**:
-- [ ] User review and feedback
-- [ ] Final accessibility check
-- [ ] Final content proofreading
+- [ ] User review of the new Ranking & Comparison feature
+- [ ] Final content check for ranking summaries
 
 **Open questions**:
 - [None]
@@ -71,6 +70,7 @@ Polish the design, improve responsiveness/accessibility, and finalize the conten
 - [x] Mobile-responsive and accessible UI.
 - [x] Clean, student-friendly visual style.
 - [x] Complete README and finalized app content.
+- [x] **Comparison Feature**: Users can name, save, and rank multiple recommenders in a session.
 
 ---
 
@@ -78,12 +78,12 @@ Polish the design, improve responsiveness/accessibility, and finalize the conten
 
 ### 2026-04-20
 
-**State found**: Empty project with templates.
-**Action taken**: Renamed project to Who to Ask, defined 8 questions and scoring logic, updated GEMINI.md and SCRATCHPAD.md. Scaffolded the app with index.html, styles.css, app.js, and questions.js. Implemented core questionnaire and results logic. Created README.md.
-**State left**: App MVP complete and functional.
+**State found**: App MVP complete and functional.
+**Action taken**: Added a comparison and ranking feature. Users can now input a name for each recommender, save results to a session-based list, and view a ranked ranking page. Refined the UI with academic-editorial styling.
+**State left**: App with multi-recommender comparison is functional.
 
 **Disclosure**:
 **AI Tool(s) Used**: Gemini CLI
-**Purpose**: Project planning, scaffolding, and implementation.
-**Modifications & Verification**: Implementation follows the approved plan. Corrected CSS/JS class mismatch for badges.
-**Learning Reflection**: Built a functional, supportive tool that prioritizes student agency using a lightweight vanilla stack.
+**Purpose**: Feature implementation and UI refinement.
+**Modifications & Verification**: Implementation follows the session-based state requirement. Tested navigation flow from Name -> Questionnaire -> Result -> Ranking.
+**Learning Reflection**: Adding session-based state management without a backend demonstrates the power of vanilla JS for complex user flows.

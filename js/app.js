@@ -8,39 +8,71 @@ const state = {
   answers: [], // Array of selected option objects
   totalScore: 0,
   hasRedFlag: false,
-  recommenderRole: '' // From Q1
+  recommenderRole: '', // From Q1
+  currentRecommenderName: '',
+  evaluatedRecommenders: [] // Array of { name, score, label, meaning }
 };
 
 // DOM Elements
 const sections = {
   home: document.getElementById('home-section'),
+  name: document.getElementById('name-section'),
   questionnaire: document.getElementById('questionnaire-section'),
-  results: document.getElementById('results-section')
+  results: document.getElementById('results-section'),
+  ranking: document.getElementById('ranking-section')
 };
 
 const elements = {
   startBtn: document.getElementById('start-btn'),
-  restartBtn: document.getElementById('restart-btn'),
+  confirmNameBtn: document.getElementById('confirm-name-btn'),
+  recommenderNameInput: document.getElementById('recommender-name'),
   nextBtn: document.getElementById('next-btn'),
   prevBtn: document.getElementById('prev-btn'),
   progressBar: document.getElementById('progress-bar'),
   questionContent: document.getElementById('question-content'),
+  evalTargetName: document.getElementById('eval-target-name'),
   resultBadge: document.getElementById('result-badge'),
   resultMeaning: document.getElementById('result-meaning'),
   resultNextSteps: document.getElementById('result-next-steps'),
-  resultChecklist: document.getElementById('result-checklist')
+  resultChecklist: document.getElementById('result-checklist'),
+  addAnotherBtn: document.getElementById('add-another-btn'),
+  viewRankingBtn: document.getElementById('view-ranking-btn'),
+  rankingList: document.getElementById('ranking-list'),
+  addFromRankingBtn: document.getElementById('add-from-ranking-btn'),
+  resetAllBtn: document.getElementById('reset-all-btn')
 };
 
 // Initialization
 function init() {
-  elements.startBtn.addEventListener('click', startEvaluation);
-  elements.restartBtn.addEventListener('click', restartEvaluation);
+  elements.startBtn.addEventListener('click', () => showSection('name'));
+  
+  elements.recommenderNameInput.addEventListener('input', (e) => {
+    elements.confirmNameBtn.disabled = !e.target.value.trim();
+  });
+  
+  elements.confirmNameBtn.addEventListener('click', startEvaluation);
   elements.nextBtn.addEventListener('click', goToNextQuestion);
   elements.prevBtn.addEventListener('click', goToPrevQuestion);
+  
+  elements.addAnotherBtn.addEventListener('click', () => {
+    elements.recommenderNameInput.value = '';
+    elements.confirmNameBtn.disabled = true;
+    showSection('name');
+  });
+  
+  elements.addFromRankingBtn.addEventListener('click', () => {
+    elements.recommenderNameInput.value = '';
+    elements.confirmNameBtn.disabled = true;
+    showSection('name');
+  });
+  
+  elements.viewRankingBtn.addEventListener('click', showRanking);
+  elements.resetAllBtn.addEventListener('click', resetEverything);
 }
 
 // Navigation Functions
 function startEvaluation() {
+  state.currentRecommenderName = elements.recommenderNameInput.value.trim();
   state.currentQuestionIndex = 0;
   state.answers = [];
   state.totalScore = 0;
@@ -50,13 +82,10 @@ function startEvaluation() {
   renderQuestion();
 }
 
-function restartEvaluation() {
-  showSection('home');
-}
-
 function showSection(sectionId) {
-  Object.values(sections).forEach(section => section.classList.add('hidden'));
+  Object.values(sections).forEach(section => section.classList.add('hidden', 'active'));
   sections[sectionId].classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Questionnaire Logic
@@ -141,7 +170,16 @@ function displayResults() {
     result = resultCategories.COULD_WORK;
   }
   
+  // Save to Session
+  state.evaluatedRecommenders.push({
+    name: state.currentRecommenderName,
+    score: state.totalScore,
+    label: result.label,
+    meaning: result.meaning
+  });
+  
   // Update UI
+  elements.evalTargetName.innerText = `Results for ${state.currentRecommenderName}`;
   elements.resultBadge.innerText = result.label;
   elements.resultBadge.className = 'badge ' + result.label.toLowerCase().replace(/ /g, '-');
   
@@ -156,9 +194,35 @@ function displayResults() {
     .join('');
     
   showSection('results');
+}
+
+function showRanking() {
+  // Sort by score descending
+  const sorted = [...state.evaluatedRecommenders].sort((a, b) => b.score - a.score);
   
-  // Smooth scroll to top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  elements.rankingList.innerHTML = sorted.map(rec => `
+    <div class="ranking-item">
+      <div class="ranking-item-main">
+        <h4>${rec.name}</h4>
+        <p>${rec.meaning}</p>
+      </div>
+      <div class="ranking-item-score">
+        <span class="badge ${rec.label.toLowerCase().replace(/ /g, '-')}">${rec.label}</span>
+        <span class="score-number">SCORE: ${rec.score}</span>
+      </div>
+    </div>
+  `).join('');
+  
+  showSection('ranking');
+}
+
+function resetEverything() {
+  if (confirm('This will clear all evaluations from this session. Are you sure?')) {
+    state.evaluatedRecommenders = [];
+    state.currentRecommenderName = '';
+    elements.recommenderNameInput.value = '';
+    showSection('home');
+  }
 }
 
 // Global scope for onclick handlers in template literals

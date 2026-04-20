@@ -54,6 +54,16 @@
             </div>
         </section>
 
+        <!-- Name Input Section -->
+        <section id="name-section" class="card hidden">
+            <h3>Who are you evaluating?</h3>
+            <p class="hint-text">Enter a nickname like "Math Teacher" or "Coach" to help you compare choices later.</p>
+            <div class="input-group">
+                <input type="text" id="recommender-name" placeholder="e.g. Ms. Silva" class="form-input">
+                <button id="confirm-name-btn" class="btn btn-primary" disabled>Continue</button>
+            </div>
+        </section>
+
         <!-- Questionnaire Section -->
         <section id="questionnaire-section" class="card hidden">
             <div class="progress-container">
@@ -71,7 +81,7 @@
         <!-- Results Section -->
         <section id="results-section" class="card hidden">
             <div class="result-header">
-                <h2>Your Evaluation Results</h2>
+                <h2 id="eval-target-name">Evaluation Results</h2>
                 <div id="result-badge" class="badge"></div>
             </div>
             
@@ -87,14 +97,34 @@
                 </div>
 
                 <div class="result-item">
-                    <h3>Your Preparation Checklist</h3>
-                    <p class="hint-text">Send these materials to your recommender once they agree to help:</p>
+                    <h3>Preparation Checklist</h3>
+                    <p class="hint-text">Send these materials once they agree to help:</p>
                     <ul id="result-checklist"></ul>
                 </div>
             </div>
 
             <div class="result-footer">
-                <button id="restart-btn" class="btn btn-secondary">Evaluate Someone Else</button>
+                <div class="btn-group">
+                    <button id="add-another-btn" class="btn btn-secondary">Add Another Person</button>
+                    <button id="view-ranking-btn" class="btn btn-primary">Compare All Results</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section id="ranking-section" class="card hidden">
+            <h2>Your Potential Recommenders</h2>
+            <p class="subtitle">Comparison of all people you have evaluated in this session.</p>
+            
+            <div id="ranking-list" class="ranking-list">
+                <!-- Ranking items will be injected here -->
+            </div>
+
+            <div class="result-footer">
+                <div class="btn-group">
+                    <button id="add-from-ranking-btn" class="btn btn-secondary">Add Another Person</button>
+                    <button id="reset-all-btn" class="btn btn-danger-outline">Reset Everything</button>
+                </div>
             </div>
         </section>
     </main>
