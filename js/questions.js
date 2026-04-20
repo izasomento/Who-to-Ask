@@ -1,5 +1,5 @@
 /**
- * Who2Ask Questionnaire Data
+ * Who to Ask Questionnaire Data
  * Each question has a unique ID, text, and an array of options.
  * Each option has a text value and a score impact.
  */

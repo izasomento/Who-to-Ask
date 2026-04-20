@@ -1,5 +1,5 @@
 /**
- * Who2Ask — Application Logic
+ * Who to Ask — Application Logic
  */
 
 // State Management

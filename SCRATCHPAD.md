@@ -79,7 +79,7 @@ Polish the design, improve responsiveness/accessibility, and finalize the conten
 ### 2026-04-20
 
 **State found**: Empty project with templates.
-**Action taken**: Renamed project to Who2Ask, defined 8 questions and scoring logic, updated GEMINI.md and SCRATCHPAD.md. Scaffolded the app with index.html, styles.css, app.js, and questions.js. Implemented core questionnaire and results logic. Created README.md.
+**Action taken**: Renamed project to Who to Ask, defined 8 questions and scoring logic, updated GEMINI.md and SCRATCHPAD.md. Scaffolded the app with index.html, styles.css, app.js, and questions.js. Implemented core questionnaire and results logic. Created README.md.
 **State left**: App MVP complete and functional.
 
 **Disclosure**:
