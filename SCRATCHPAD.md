@@ -7,8 +7,8 @@
 **Last session**: 2026-04-20
 
 **Next actions**:
-- [ ] User review of the new Ranking & Comparison feature
-- [ ] Final content check for ranking summaries
+- [ ] User testing with target audience (first-gen/international)
+- [ ] Accessibility audit (WCAG AA)
 
 **Open questions**:
 - [None]
@@ -71,20 +71,37 @@ Polish the design, improve responsiveness/accessibility, and finalize the conten
 - [x] Clean, student-friendly visual style.
 - [x] Complete README and finalized app content.
 - [x] **Comparison Feature**: Users can name, save, and rank multiple recommenders in a session.
+- [x] **Structured Decision Support**: Transparent scoring breakdown and explicit model assumptions.
+- [x] **Mission-Aligned Framing**: Content focused on educational access and supporting underserved students.
 
 ---
 
 ## Session Log
 
-### 2026-04-20
+### 2026-04-20 (Afternoon)
 
-**State found**: App MVP complete and functional.
-**Action taken**: Added a comparison and ranking feature. Users can now input a name for each recommender, save results to a session-based list, and view a ranked ranking page. Refined the UI with academic-editorial styling. Renamed the app to "Letters for Minerva".
-- Highlighted the word "Letters" in the main heading with `var(--mu-goldenrod)`.
-**State left**: App with multi-recommender comparison is functional. Visual polish added to branding.
+**State found**: Multi-recommender comparison is functional.
+**Action taken**: Implemented the "Edit" flow for evaluated recommenders.
+- Added `editingId` to app state to track update operations.
+- Modified data structure to store raw question responses for re-populating the form.
+- Added "Edit" action to the ranking list for each recommender.
+- Updated Questionnaire UI with "Editing Mode" badge and context-aware button text.
+- Ensured "Add Another" actions reset the edit state to prevent state carry-over.
+**State left**: Edit flow complete and integrated into the comparison feature.
+
+### 2026-04-20 (Evening)
+
+**State found**: App is functional with multi-recommender comparison.
+**Action taken**: Strengthened project framing and transparent decision support.
+- Updated `index.html` (Home) with "How the model works" and "Assumptions & limits" sections.
+- Implemented `Scoring Breakdown` in `js/app.js` and UI to show factors behind every score.
+- Rewrote `README.md` to frame the tool as a structured decision-support aid for educational access.
+- Updated homepage copy to specifically address students with limited guidance access.
+- Refined CSS for info blocks and scoring breakdown cards.
+**State left**: Project is now a mission-aligned, transparent decision-support tool.
 
 **Disclosure**:
 **AI Tool(s) Used**: Gemini CLI
-**Purpose**: Feature implementation and UI refinement.
-**Modifications & Verification**: Implementation follows the session-based state requirement. Tested navigation flow from Name -> Questionnaire -> Result -> Ranking.
-**Learning Reflection**: Adding session-based state management without a backend demonstrates the power of vanilla JS for complex user flows.
+**Purpose**: Content strategy, UI refinement, and README rewrite.
+**Modifications & Verification**: Verified that scoring breakdown correctly reflects `js/questions.js` logic.
+**Learning Reflection**: Product thinking in education means moving from "just a quiz" to "information equity" by making the "hidden curriculum" visible through transparency.

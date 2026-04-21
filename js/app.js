@@ -165,17 +165,26 @@ function goToPrevQuestion() {
 function calculateResults() {
   state.totalScore = 0;
   state.hasRedFlag = false;
+  const breakdown = [];
   
   state.answers.forEach((answer, index) => {
     state.totalScore += answer.score;
     if (answer.isRedFlag) state.hasRedFlag = true;
     if (index === 0) state.recommenderRole = answer.text;
+    
+    // Skip Q1 (role) for breakdown as it's score 0
+    if (index > 0 && answer.score !== 0) {
+      breakdown.push({
+        factor: questions[index].text,
+        score: answer.score
+      });
+    }
   });
   
-  displayResults();
+  displayResults(breakdown);
 }
 
-function displayResults() {
+function displayResults(breakdown) {
   let result;
   
   if (state.hasRedFlag || state.totalScore < resultCategories.COULD_WORK.minScore) {
@@ -198,7 +207,8 @@ function displayResults() {
     nextSteps: result.nextSteps,
     checklist: result.checklist,
     extraGuidance: result.extraGuidance,
-    insights: insights
+    insights: insights,
+    breakdown: breakdown
   });
   
   // Update UI
@@ -207,6 +217,17 @@ function displayResults() {
   elements.resultBadge.className = 'badge ' + result.label.toLowerCase().replace(/ /g, '-');
   
   elements.resultMeaning.innerText = result.meaning;
+
+  // Render Breakdown
+  const breakdownEl = document.getElementById('result-breakdown');
+  breakdownEl.innerHTML = breakdown.length > 0 
+    ? breakdown.map(item => `
+        <div class="breakdown-item">
+            <span class="breakdown-factor">${item.factor}</span>
+            <span class="breakdown-score ${item.score > 0 ? 'pos' : 'neg'}">${item.score > 0 ? '+' : ''}${item.score}</span>
+        </div>
+      `).join('')
+    : '<p class="hint-text">No significant scoring factors identified.</p>';
   
   elements.resultNextSteps.innerHTML = result.nextSteps
     .map(step => `<li>${step}</li>`)
@@ -330,6 +351,20 @@ function toggleDetail(index) {
           </div>
         </div>
         
+        <div class="detail-breakdown-section">
+          <h5>Scoring Breakdown</h5>
+          <div class="scoring-breakdown small">
+            ${rec.breakdown.length > 0 
+              ? rec.breakdown.map(item => `
+                  <div class="breakdown-item">
+                    <span class="breakdown-factor">${item.factor}</span>
+                    <span class="breakdown-score ${item.score > 0 ? 'pos' : 'neg'}">${item.score > 0 ? '+' : ''}${item.score}</span>
+                  </div>
+                `).join('')
+              : '<p class="hint-text">No significant factors.</p>'}
+          </div>
+        </div>
+
         <div class="detail-next-step">
           <h5>Suggested Next Step</h5>
           <p>${rec.nextSteps[0]}</p>

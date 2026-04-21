@@ -43,4 +43,18 @@
 3. **Mandatory Disclosure**: AI use is logged in `SCRATCHPAD.md`.
 **Trade-offs**: Development may be slower due to mandatory human review and documentation overhead, but the resulting system is more ethical, secure, and aligned with institutional values.
 
-<!-- Add new decisions below, incrementing the number. -->
+## Decision 004 — Transparent Scoring and Mission Alignment
+
+**Date**: 2026-04-20
+**Decision**: Incorporate a transparent scoring breakdown into the UI and frame the tool explicitly as "structured decision-support" for students with limited access to counseling.
+**Rationale**: This moves the project from a simple "quiz" to a more serious tool for "information equity." By showing the "why" behind the scores, we educate the user on the underlying factors that admissions officers value, deepening their strategic thinking.
+**Alternatives considered**: Keeping the logic hidden to avoid overwhelming the user (decided against because transparency builds trust and educational value).
+**Trade-offs**: Slightly more complex UI in the results and ranking views, but higher educational impact.
+
+**Guardrails Alignment**:
+- **Privacy & IP**: No student data is at risk.
+- **Disclosure**: Explicitly discloses the model's assumptions and limits.
+- **Responsibility**: The user is empowered to exercise their own judgment on the final score.
+- **Bias & Trust**: Transparency reduces the "black box" feel of the algorithm.
+- **Values**: Directly aligns with the mission of supporting student agency and educational access.
+

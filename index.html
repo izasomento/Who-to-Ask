@@ -21,7 +21,7 @@
         <!-- Home Section -->
         <section id="home-section" class="card active">
             <h2>Find your best recommenders.</h2>
-            <p class="subtitle">A thoughtful recommendation is built on a strong connection. Letters for Minerva helps you evaluate your options and prepare for meaningful outreach.</p>
+            <p class="subtitle">A thoughtful recommendation is built on a strong connection. Letters for Minerva helps you evaluate your options and prepare for meaningful outreach, especially if you're navigating the process without a dedicated counselor.</p>
             
             <div class="features-list">
                 <div class="feature-item">
@@ -47,10 +47,21 @@
                 </div>
             </div>
 
+            <div class="info-grid">
+                <div class="info-block">
+                    <h4>How the model works</h4>
+                    <p>This tool uses a structured scoring model based on four core pillars: <strong>depth of connection</strong>, <strong>context of interaction</strong>, <strong>recent growth</strong>, and <strong>advocacy potential</strong>. By answering these questions, you're reasoning through which people can provide the most specific, enthusiastic evidence of your fit for Minerva.</p>
+                </div>
+                <div class="info-block">
+                    <h4>Assumptions & Limits</h4>
+                    <p>The model assumes that recent and specific interactions lead to stronger letters. It prioritizes supportiveness because an unenthusiastic letter can often hurt more than it helps. This is a reflection aid to support your judgment, not a guarantee of admission.</p>
+                </div>
+            </div>
+
             <button id="start-btn" class="btn btn-primary">Start Evaluation</button>
             
             <div class="disclaimer">
-                Letters for Minerva is a guidance tool designed for reflection. It is not official admissions advice, does not predict outcomes, and does not guarantee the quality of a recommendation.
+                Letters for Minerva is a guidance tool designed for reflection. It is not official admissions advice, does not predict outcomes, and is specifically built to support students navigating applications under uncertainty.
             </div>
         </section>
 
@@ -89,6 +100,11 @@
                 <div class="result-item">
                     <h3>What this means</h3>
                     <p id="result-meaning"></p>
+                </div>
+
+                <div class="result-item">
+                    <h3>Scoring Breakdown</h3>
+                    <div id="result-breakdown" class="scoring-breakdown"></div>
                 </div>
 
                 <div class="result-item">

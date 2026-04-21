@@ -272,6 +272,35 @@ h3 {
     color: var(--text-muted);
 }
 
+.info-grid {
+    display: grid;
+    gap: var(--space-6);
+    margin: var(--space-7) 0;
+    padding: var(--space-6);
+    background-color: var(--bg-subtle);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--mu-goldenrod);
+}
+
+@media (min-width: 640px) {
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.info-block h4 {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    margin-bottom: var(--space-2);
+    color: var(--text-strong);
+}
+
+.info-block p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
 .disclaimer {
     margin-top: var(--space-7);
     padding-top: var(--space-5);
@@ -280,6 +309,65 @@ h3 {
     color: var(--text-muted);
     line-height: 1.6;
     font-style: italic;
+}
+
+/* Scoring Breakdown UI */
+.scoring-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--mu-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+}
+
+.breakdown-factor {
+    font-size: 0.8125rem;
+    color: var(--text-main);
+}
+
+.breakdown-score {
+    font-weight: 700;
+    font-size: 0.8125rem;
+}
+
+.breakdown-score.pos { color: var(--success-text); }
+.breakdown-score.neg { color: var(--danger-text); }
+
+.scoring-breakdown.small {
+    gap: 4px;
+}
+
+.scoring-breakdown.small .breakdown-item {
+    padding: 4px 8px;
+    border: none;
+    background-color: transparent;
+}
+
+.detail-breakdown-section {
+    margin: var(--space-5) 0;
+    padding: var(--space-4);
+    background-color: var(--mu-white);
+    border-radius: var(--radius-sm);
+}
+
+.detail-breakdown-section h5 {
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-3);
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: var(--space-1);
 }
 
 /* Input Styles */
