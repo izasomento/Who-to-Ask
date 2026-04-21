@@ -9,6 +9,7 @@
 **Next actions**:
 - [ ] User testing with target audience (first-gen/international)
 - [ ] Accessibility audit (WCAG AA)
+- [ ] Final content review for the new 'How it Works' page
 
 **Open questions**:
 - [None]
@@ -103,3 +104,20 @@ Polish the design, improve responsiveness/accessibility, and finalize the conten
 **Purpose**: UI/UX optimization.
 **Modifications & Verification**: Confirmed individual results screen is clean. Confirmed ranking view still allows "Why this score" inspection.
 **Learning Reflection**: Good product design sometimes means withholding information until the moment it is most useful for decision-making (comparison) to avoid overwhelming the user during the initial evaluation.
+
+### 2026-04-20 (Late Night)
+
+**State found**: App has collapsible methodology on the home page.
+**Action taken**: Simplified the homepage by moving deep explanatory content to a separate page.
+- Created `how-it-works.html` with full methodology, pillars, and assumptions content.
+- Removed the collapsible methodology section from `index.html`.
+- Added a `footer-nav` with links to "How it Works" and "Apply to Minerva" (external).
+- Refined CSS for footer navigation and separator.
+- Cleaned up `js/app.js` by removing now-unused methodology toggle logic.
+**State left**: Homepage is extremely focused and high-conversion; deeper methodology is accessible via footer.
+
+**Disclosure**:
+**AI Tool(s) Used**: Gemini CLI
+**Purpose**: Information architecture and multi-page reorganization.
+**Modifications & Verification**: Verified internal link between pages. Verified external link opens in new tab.
+**Learning Reflection**: Progressive disclosure (moving secondary content to subpages) is a powerful way to maintain a "mission-critical" focus on the primary user journey while still providing depth for those who seek it.

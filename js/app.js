@@ -42,6 +42,19 @@ const elements = {
   resetAllBtn: document.getElementById('reset-all-btn')
 };
 
+// Helper for Collapsible Sections
+function toggleCollapsible(toggleBtn, contentEl) {
+  const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+  const newState = !isExpanded;
+  
+  toggleBtn.setAttribute('aria-expanded', newState);
+  if (newState) {
+    contentEl.classList.remove('hidden');
+  } else {
+    contentEl.classList.add('hidden');
+  }
+}
+
 // Initialization
 function init() {
   elements.startBtn.addEventListener('click', () => showSection('name'));
@@ -68,6 +81,15 @@ function init() {
   
   elements.viewRankingBtn.addEventListener('click', showRanking);
   elements.resetAllBtn.addEventListener('click', resetEverything);
+
+  // Scoring Breakdown Toggle (Result View)
+  const breakdownToggle = document.getElementById('breakdown-toggle');
+  const breakdownEl = document.getElementById('result-breakdown');
+  if (breakdownToggle && breakdownEl) {
+    breakdownToggle.addEventListener('click', () => {
+      toggleCollapsible(breakdownToggle, breakdownEl);
+    });
+  }
 
   // Keyboard Support
   window.addEventListener('keydown', (e) => {
@@ -387,10 +409,9 @@ function toggleRankingBreakdown(event, index) {
   event.stopPropagation();
   const toggleBtn = event.currentTarget;
   const breakdownEl = document.getElementById(`rank-breakdown-${index}`);
-  const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-  
-  toggleBtn.setAttribute('aria-expanded', !isExpanded);
-  breakdownEl.classList.toggle('hidden');
+  if (toggleBtn && breakdownEl) {
+    toggleCollapsible(toggleBtn, breakdownEl);
+  }
 }
 
 function resetEverything() {

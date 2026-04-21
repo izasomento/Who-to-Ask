@@ -58,3 +58,17 @@
 - **Bias & Trust**: Transparency reduces the "black box" feel of the algorithm.
 - **Values**: Directly aligns with the mission of supporting student agency and educational access.
 
+## Decision 005 — Separate 'How it Works' Page and Footer Navigation
+
+**Date**: 2026-04-20
+**Decision**: Move the deeper explanatory content (methodology and assumptions) from the home page to a dedicated `how-it-works.html` page and add structured footer navigation.
+**Rationale**: This significantly reduces the cognitive load on the first-time user and makes the landing page feel more professional and focused. It follows the "progressive disclosure" pattern where detailed information is available but not forced upon the user. The footer links provide clear paths for deeper engagement and institutional alignment.
+**Alternatives considered**: Keeping the content in a collapsible section on the home page (decided against because the page still felt vertically cluttered and less "clean").
+**Trade-offs**: Requires a multi-page structure, which slightly increases maintenance (headers/footers need to be kept in sync manually since there's no framework).
+
+**Guardrails Alignment**:
+- **Privacy & IP**: No student data is impacted by this layout change.
+- **Disclosure**: Transparency is maintained by providing a clear, dedicated link to the methodology.
+- **Responsibility**: Human-centered design prioritize the user's focus.
+- **Bias & Trust**: A dedicated "How it Works" page builds authority and trust in the tool's reasoning.
+- **Values**: Aligns with "Clarity over cleverness" by simplifying the primary interface while keeping the depth accessible.

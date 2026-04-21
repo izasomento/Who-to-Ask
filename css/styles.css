@@ -122,6 +122,33 @@ body {
     font-size: 0.75rem;
 }
 
+.footer-nav {
+    margin-bottom: var(--space-4);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.footer-nav a {
+    color: var(--mu-clay);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+    transition: color var(--transition-fast);
+}
+
+.footer-nav a:hover {
+    color: var(--mu-tangerine);
+}
+
+.footer-nav .separator {
+    color: var(--mu-ash);
+    font-weight: 300;
+}
+
 /* Typography Hierarchy */
 h2, h3 {
     font-family: var(--font-serif);
@@ -161,8 +188,11 @@ h3 {
     transition: opacity var(--transition-fast);
 }
 
-.card.hidden {
-    display: none;
+.card.hidden,
+.scoring-breakdown.hidden,
+.info-grid.hidden,
+.hidden {
+    display: none !important;
 }
 
 /* Buttons - High Contrast */
@@ -272,14 +302,20 @@ h3 {
     color: var(--text-muted);
 }
 
+.home-methodology {
+    margin-top: var(--space-7);
+    border-top: 1px solid var(--border-subtle);
+}
+
 .info-grid {
     display: grid;
     gap: var(--space-6);
-    margin: var(--space-7) 0;
+    margin: var(--space-6) 0;
     padding: var(--space-6);
     background-color: var(--bg-subtle);
     border-radius: var(--radius-sm);
     border-left: 4px solid var(--mu-goldenrod);
+    animation: fadeIn 0.3s ease-out;
 }
 
 @media (min-width: 640px) {
