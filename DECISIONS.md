@@ -46,10 +46,10 @@
 ## Decision 004 — Transparent Scoring and Mission Alignment
 
 **Date**: 2026-04-20
-**Decision**: Incorporate a transparent scoring breakdown into the UI and frame the tool explicitly as "structured decision-support" for students with limited access to counseling.
-**Rationale**: This moves the project from a simple "quiz" to a more serious tool for "information equity." By showing the "why" behind the scores, we educate the user on the underlying factors that admissions officers value, deepening their strategic thinking.
-**Alternatives considered**: Keeping the logic hidden to avoid overwhelming the user (decided against because transparency builds trust and educational value).
-**Trade-offs**: Slightly more complex UI in the results and ranking views, but higher educational impact.
+**Decision**: Incorporate a transparent scoring breakdown into the UI (specifically restricted to the comparison/ranking view) and frame the tool explicitly as "structured decision-support" for students with limited access to counseling.
+**Rationale**: This moves the project from a simple "quiz" to a more serious tool for "information equity." By showing the "why" behind the scores in the final comparison stage, we educate the user on the underlying factors that admissions officers value when they are most likely to be weighing different options. Restricting it to the ranking view keeps the initial results screen focused and uncluttered.
+**Alternatives considered**: Showing the breakdown on both screens (decided against to minimize cognitive load on initial result).
+**Trade-offs**: Slightly more complex UI in the ranking views, but higher educational impact during the decision-making phase.
 
 **Guardrails Alignment**:
 - **Privacy & IP**: No student data is at risk.

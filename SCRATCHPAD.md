@@ -89,19 +89,17 @@ Polish the design, improve responsiveness/accessibility, and finalize the conten
 - Ensured "Add Another" actions reset the edit state to prevent state carry-over.
 **State left**: Edit flow complete and integrated into the comparison feature.
 
-### 2026-04-20 (Evening)
+### 2026-04-20 (Night)
 
-**State found**: App is functional with multi-recommender comparison.
-**Action taken**: Strengthened project framing and transparent decision support.
-- Updated `index.html` (Home) with "How the model works" and "Assumptions & limits" sections.
-- Implemented `Scoring Breakdown` in `js/app.js` and UI to show factors behind every score.
-- Rewrote `README.md` to frame the tool as a structured decision-support aid for educational access.
-- Updated homepage copy to specifically address students with limited guidance access.
-- Refined CSS for info blocks and scoring breakdown cards.
-**State left**: Project is now a mission-aligned, transparent decision-support tool.
+**State found**: App has collapsible scoring breakdown on both results and ranking screens.
+**Action taken**: Moved the scoring breakdown exclusively to the final comparison/ranking view.
+- Removed "Why this score" toggle and container from `index.html` results section.
+- Cleaned up `js/app.js` to remove redundant breakdown rendering in the individual result flow.
+- Verified that the breakdown remains fully functional and collapsible within each recommender's detail view in the ranking section.
+**State left**: Initial results screen is focused on immediate guidance; strategic breakdown is reserved for the comparison stage.
 
 **Disclosure**:
 **AI Tool(s) Used**: Gemini CLI
-**Purpose**: Content strategy, UI refinement, and README rewrite.
-**Modifications & Verification**: Verified that scoring breakdown correctly reflects `js/questions.js` logic.
-**Learning Reflection**: Product thinking in education means moving from "just a quiz" to "information equity" by making the "hidden curriculum" visible through transparency.
+**Purpose**: UI/UX optimization.
+**Modifications & Verification**: Confirmed individual results screen is clean. Confirmed ranking view still allows "Why this score" inspection.
+**Learning Reflection**: Good product design sometimes means withholding information until the moment it is most useful for decision-making (comparison) to avoid overwhelming the user during the initial evaluation.

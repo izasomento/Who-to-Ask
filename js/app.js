@@ -217,17 +217,6 @@ function displayResults(breakdown) {
   elements.resultBadge.className = 'badge ' + result.label.toLowerCase().replace(/ /g, '-');
   
   elements.resultMeaning.innerText = result.meaning;
-
-  // Render Breakdown
-  const breakdownEl = document.getElementById('result-breakdown');
-  breakdownEl.innerHTML = breakdown.length > 0 
-    ? breakdown.map(item => `
-        <div class="breakdown-item">
-            <span class="breakdown-factor">${item.factor}</span>
-            <span class="breakdown-score ${item.score > 0 ? 'pos' : 'neg'}">${item.score > 0 ? '+' : ''}${item.score}</span>
-        </div>
-      `).join('')
-    : '<p class="hint-text">No significant scoring factors identified.</p>';
   
   elements.resultNextSteps.innerHTML = result.nextSteps
     .map(step => `<li>${step}</li>`)
@@ -352,8 +341,11 @@ function toggleDetail(index) {
         </div>
         
         <div class="detail-breakdown-section">
-          <h5>Scoring Breakdown</h5>
-          <div class="scoring-breakdown small">
+          <button class="toggle-btn" onclick="toggleRankingBreakdown(event, ${index})" aria-expanded="false" aria-controls="rank-breakdown-${index}">
+            <span>Why this score?</span>
+            <span class="chevron"></span>
+          </button>
+          <div class="scoring-breakdown small hidden" id="rank-breakdown-${index}">
             ${rec.breakdown.length > 0 
               ? rec.breakdown.map(item => `
                   <div class="breakdown-item">
@@ -391,6 +383,16 @@ function toggleDetail(index) {
   }
 }
 
+function toggleRankingBreakdown(event, index) {
+  event.stopPropagation();
+  const toggleBtn = event.currentTarget;
+  const breakdownEl = document.getElementById(`rank-breakdown-${index}`);
+  const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+  
+  toggleBtn.setAttribute('aria-expanded', !isExpanded);
+  breakdownEl.classList.toggle('hidden');
+}
+
 function resetEverything() {
   if (confirm('This will clear all evaluations from this session. Are you sure?')) {
     state.evaluatedRecommenders = [];
@@ -403,6 +405,7 @@ function resetEverything() {
 // Global scope for onclick handlers
 window.selectOption = selectOption;
 window.toggleDetail = toggleDetail;
+window.toggleRankingBreakdown = toggleRankingBreakdown;
 
 // Run init
 init();
